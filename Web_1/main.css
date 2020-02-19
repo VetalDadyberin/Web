@@ -1,0 +1,59 @@
+body{
+    font-family: 'Circe';
+    font-weight: 400;
+    font-style: normal;
+}
+
+
+.my_txt{
+
+  margin: 10px -10px;
+}
+
+.jumbotron{
+
+  margin: 5px -10px;
+}
+
+blockquote {
+  margin: 0px 3px;
+}
+
+tr {
+  background-color: white;
+}
+
+table {
+  width: 100%;
+}
+
+.my_class{
+    height: 800px
+
+}
+
+
+
+
+.my_map img{
+  padding: 10px 10px;
+  width: 35em;
+  
+}
+
+.Louis img{
+  float:right;
+  width: 15em;
+  margin: 5px 10px;
+}
+
+.king img{
+  float:right;
+  width: 20em;
+  margin: 5px 10px;
+  
+}
+
+
+
+
