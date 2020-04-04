@@ -12,20 +12,11 @@ export default class Model {
         }
         const questioner = new Questioner_struct(number.toString(10), question, first, seconnd, third, fourth , fifth);
         this.questioner_arr.push(questioner);
-
-        return questioner;
     }
 
     edit_questioner(id, question, first, seconnd, third, fourth , fifth){
-        console.log(id);
-        const iter = this.questioner_arr.findIndex((item) => item.id === id);
-        let number = parseInt(id);
-        /*const quest = new Questioner_struct(id, question, first, seconnd, third, fourth , fifth);
-        this.questioner_arr[iter] = quest;*/
-        //this.questioner_arr[iter].editor_of_quest(question, first, seconnd, third, fourth , fifth);
-        this.questioner_arr.splice(iter, 1);
-        const questioner = new Questioner_struct(number.toString(10), question, first, seconnd, third, fourth , fifth);
-        this.questioner_arr.push(questioner);
+        this.delete_questioner(id);
+        this.add_questioner(question, first, seconnd, third, fourth , fifth);
     }
 
     delete_questioner(id){
@@ -33,6 +24,19 @@ export default class Model {
         this.questioner_arr.splice(iter, 1);
     }
 
-
+    set_right(id, right){
+        const iter = this.questioner_arr.findIndex( (item) => item.id === id);
+        this.questioner_arr[iter].set_right(right)
+    }
     
+    choose(id, chosen){
+        const iter = this.questioner_arr.findIndex( (item) => item.id === id);
+        console.log('inside = ' + this.questioner_arr[iter].right);
+        console.log('input = ' + chosen);
+        if(this.questioner_arr[iter].right == chosen){
+            
+            return true;
+        }
+        return false;
+    }
 }

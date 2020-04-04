@@ -17,6 +17,9 @@ export default class Questioner_view{
             <td>5. ${this.questioner_struct.answer_5} </td>
             <td><button data-id="${this.questioner_struct.id}" class="delete_questioner">Delete this questioner</button></td>
             <td><button data-id="${this.questioner_struct.id}" class="edit_questioner">Edit this questioner</button></td>
+            <td><button data-id="${this.questioner_struct.id}" class="set_right">Set right variant</button></td>
+            <td><button data-id="${this.questioner_struct.id}" class="choose">Choose&check</button></td>
+
         </tr>`;
     }
 

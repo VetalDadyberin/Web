@@ -13,8 +13,8 @@ export default class Controller{
       this.worker.onmessage = function (e) {
         document.querySelector('#web_worker_field').innerHTML = `<table border="1">Here is ${e.data} answers</table>`;
       }
+    }
   }
-}
 
   onClick(e) {
     if (e.target.id === "add-questioner") {
@@ -22,14 +22,23 @@ export default class Controller{
         return;
     }
     if (e.target.className === "edit_questioner") {
-      this.edit_q();
+      this.edit_q(e.target.dataset.id);
         return;
     }
     if (e.target.className === "delete_questioner") {
-      this.delete_q();
+      this.delete_q(e.target.dataset.id);
+      return;
+    }
+
+    if (e.target.className === "choose") {
+      this.choose(e.target.dataset.id);
       return;
     }
     
+    if (e.target.className === "set_right") {
+      this.set_right_variant(e.target.dataset.id);
+      return;
+    }
   }
 
   
@@ -63,6 +72,32 @@ export default class Controller{
     document.querySelector('#field').innerHTML = this.arr_view.toHtml();
   }
   
+  set_right_variant(id){
+    const right = prompt('Set right variant : ', '');
+    if(this.for_check(right)){
+      this.questioner_arr.set_right(id, right);
+    }
+    else{
+      document.querySelector('#choose_field').innerHTML = `Cannot set cause has no variant like that`;
+    }
+    
+  }
+
+  choose(id){
+    const chosen = prompt('Choose answer that you think is right : ', '');
+    if(this.for_check(chosen)){
+      document.querySelector('#choose_field').innerHTML = `<table border="1">Your answer is ` + this.questioner_arr.choose(id, chosen); +`</table>`;
+    }
+    else{
+      document.querySelector('#choose_field').innerHTML = `Cannot choose cause has no variant like that`;
+    }
+  }
   
+  for_check(checking){
+    if(checking != '1' && checking != '2' && checking != '3' && checking != '4' && checking != '5'){
+      return false;
+    }
+    return true;
+  }
 }
 
