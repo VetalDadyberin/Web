@@ -45,24 +45,22 @@ export default class Controller{
    
   add_q(){
     const question = prompt('Enter question:', '');
-    const answer_1 = prompt('Enter answer 1:', '');
-    const answer_2 = prompt('Enter answer 2:', '');
-    const answer_3 = prompt('Enter answer 3:', '');
-    const answer_4 = prompt('Enter answer 4:', '');
-    const answer_5 = prompt('Enter answer 5:', '');
-    this.questioner_arr.add_questioner(question, answer_1, answer_2, answer_3, answer_4 , answer_5);
+    const answer = [];
+    for (var i = 0; i < 5; i++) {
+      answer[i] = prompt('Enter answer ' + (i+1) + ':', '');
+    }
+    this.questioner_arr.add_questioner(question, answer[0], answer[1], answer[2], answer[3] , answer[4]);
     document.querySelector('#field').innerHTML = this.arr_view.toHtml();
     this.worker.postMessage([answer_1, answer_2, answer_3, answer_4, answer_5]);
   }
 
   edit_q(id){
     const question = prompt('Enter question:', '');
-    const answer_1 = prompt('Enter answer 1:', '');
-    const answer_2 = prompt('Enter answer 2:', '');
-    const answer_3 = prompt('Enter answer 3:', '');
-    const answer_4 = prompt('Enter answer 4:', '');
-    const answer_5 = prompt('Enter answer 5:', '');
-    this.questioner_arr.edit_questioner(id, question, answer_1, answer_2, answer_3, answer_4 , answer_5);
+    const answer = [];
+    for (var i = 0; i < 5; i++) {
+      answer[i] = prompt('Enter answer ' + (i+1) + ':', '');
+    }
+    this.questioner_arr.edit_questioner(id, question, answer[0], answer[1], answer[2], answer[3] , answer[4]);
     document.querySelector('#field').innerHTML = this.arr_view.toHtml();
     this.worker.postMessage([answer_1, answer_2, answer_3, answer_4, answer_5]);
   }
